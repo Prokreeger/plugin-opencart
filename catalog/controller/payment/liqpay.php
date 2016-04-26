@@ -53,7 +53,7 @@ class ControllerPaymentLiqpay extends Controller
 
         $private_key = $this->config->get('liqpay_private_key');
         $public_key = $this->config->get('liqpay_public_key');
-        $type = 'buy';
+        $type = 'pay';
         $currency = $order_info['currency_code'];
         if ($currency == 'RUR') { $currency = 'RUB'; }
         $amount = $this->currency->format(
@@ -75,7 +75,7 @@ class ControllerPaymentLiqpay extends Controller
                           'currency'    => $currency,
                           'description' => $description,
                           'order_id'    => $order_id,
-                          'type'        => $type,
+                          'action'        => $type,
                           'language'    => $language,
                           'server_url'  => $server_url,
                           'result_url'  => $result_url);
